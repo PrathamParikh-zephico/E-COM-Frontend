@@ -5,10 +5,9 @@ const PUBLISHABLE_API_KEY =
   import.meta.env.VITE_STORE_PUBLISHABLE_API_KEY ||
   "pk_343b075589624994508f2d0e9c3d9b41cf4d52b679042177ecccb68a2ee48deb";
 
-// 🔥 YOUR REGION (IMPORTANT)
+
 const REGION_ID = "reg_01KPKCM1TJ9KGBAJ4F0S3ND26E";
 
-// 🔥 UNIVERSAL REQUEST
 const requestStore = async (path, options = {}) => {
   const response = await fetch(`${STORE_API_BASE_URL}${path}`, {
     method: options.method || "GET",
@@ -30,7 +29,6 @@ const requestStore = async (path, options = {}) => {
   return data;
 };
 
-// 🔥 FETCH ALL PRODUCTS (WITH REGION)
 export const fetchStoreProducts = async () => {
   const data = await requestStore(
     `/store/products?region_id=${REGION_ID}`
@@ -39,7 +37,6 @@ export const fetchStoreProducts = async () => {
   return data.products || [];
 };
 
-// 🔥 FETCH SINGLE PRODUCT (WITH REGION)
 export const fetchStoreProduct = async (productId) => {
   const data = await requestStore(
     `/store/products/${productId}?region_id=${REGION_ID}`
@@ -48,7 +45,6 @@ export const fetchStoreProduct = async (productId) => {
   return data.product || null;
 };
 
-// 🔥 CUSTOMIZE RING API
 export const customizeRing = async ({
   variant_id,
   size,
